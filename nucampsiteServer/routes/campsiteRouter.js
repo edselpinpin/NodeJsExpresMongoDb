@@ -189,7 +189,7 @@ campsiteRouter.route('/:campsiteId/comments/:commentId')
                     .catch(err => next(err));
                 } else {  
                     err = new Error(`You can only update comments you authored!`);
-                    err.status = 404;
+                    err.status = 403;
                     return next(err);
                 }  
          } 
