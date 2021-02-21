@@ -15,6 +15,7 @@ const campsiteRouter = require('./routes/campsiteRouter');
 const promotionRouter = require('./routes/promotionsRouter');
 const partnerRouter = require('./routes/partnerRouter');
 const uploadRouter = require('./routes/uploadRouter');
+const favorites   = require('./routes/favoriteRouter');
 
 const mongoose = require('mongoose');
 const { appendFileSync } = require('fs');
@@ -54,16 +55,10 @@ app.use(express.urlencoded({ extended: false }));
 
 
 //app.use(cookieParser('12345-67890-09876-54321'));
-
-
 app.use(passport.initialize());
-
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
-
-
 
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -72,6 +67,7 @@ app.use('/campsites', campsiteRouter);
 app.use('/promotions', promotionRouter);
 app.use('/partners', partnerRouter);
 app.use('/imageUpload', uploadRouter);
+app.use('/favorites', favorites);
 
 
 // catch 404 and forward to error handler
